@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    {% load static %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestion Pressing - AquaClean</title>
+  <!-- FontAwesome pour les icônes -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Style CSS externe -->
+  <link rel="stylesheet" href="{% static 'CSS/style.css' %}">
+</head>
+<body>
+
+  <!-- Barre de navigation latérale -->
+  <aside class="sidebar">
+    <div class="logo">
+      <i class="fa-solid fa-soap"></i>
+      <h2>AquaClean</h2>
+    </div>
+    <nav class="menu">
+      <a href="#" class="active"><i class="fa-solid fa-chart-pie"></i> Tableau de bord</a>
+      <a href="#"><i class="fa-solid fa-jug-detergent"></i> Nouvel Enregistrement</a>
+      <a href="#"><i class="fa-solid fa-list-check"></i> Commandes en cours</a>
+      <a href="#"><i class="fa-solid fa-users"></i> Clients</a>
+      <a href="#"><i class="fa-solid fa-tags"></i> Tarifs & Services</a>
+      <a href="#"><i class="fa-solid fa-gear"></i> Paramètres</a>
+    </nav>
+  </aside>
+
+  <!-- Contenu Principal -->
+  <main class="main-content">
+    
+    <!-- En-tête -->
+    <header class="topbar">
+      <div class="search-box">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" placeholder="Rechercher une commande, un client...">
+      </div>
+      <div class="user-profile">
+        <i class="fa-regular fa-bell badge-icon"></i>
+        <div class="avatar">AD</div>
+        <span>Admin Pressing</span>
+      </div>
+    </header>
+
+    <!-- Cartes de Statistiques -->
+    <section class="stats-grid">
+      <div class="card stat-card">
+        <div class="stat-icon bg-blue"><i class="fa-solid fa-basket-shopping"></i></div>
+        <div class="stat-info">
+          <h3>14</h3>
+          <p>Dépôts aujourd'hui</p>
+        </div>
+      </div>
+      <div class="card stat-card">
+        <div class="stat-icon bg-yellow"><i class="fa-solid fa-rotate"></i></div>
+        <div class="stat-info">
+          <h3>28</h3>
+          <p>En nettoyage / repassage</p>
+        </div>
+      </div>
+      <div class="card stat-card">
+        <div class="stat-icon bg-green"><i class="fa-solid fa-circle-check"></i></div>
+        <div class="stat-info">
+          <h3>9</h3>
+          <p>Prêts à retirer</p>
+        </div>
+      </div>
+      <div class="card stat-card">
+        <div class="stat-icon bg-purple"><i class="fa-solid fa-wallet"></i></div>
+        <div class="stat-info">
+          <h3>340 €</h3>
+          <p>Recette du jour</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Formulaire et Liste -->
+    <div class="content-grid">
+      
+      <!-- Formulaire d'enregistrement -->
+      <section class="card form-section">
+        <h2><i class="fa-solid fa-plus-circle"></i> Nouveau Dépôt</h2>
+        <form action="#">
+          <div class="form-group">
+            <label for="client">Client</label>
+            <input type="text" id="client" placeholder="Nom complet ou Téléphone" required>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="article">Article</label>
+              <select id="article">
+                <option>Chemise (3.50 €)</option>
+                <option>Costume 2 pièces (12.00 €)</option>
+                <option>Robe de soirée (15.00 €)</option>
+                <option>Manteau / Veste (10.00 €)</option>
+                <option>Couette 2 places (18.00 €)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="qte">Quantité</label>
+              <input type="number" id="qte" value="1" min="1">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="service">Service spécifique</label>
+            <div class="checkbox-group">
+              <label><input type="checkbox" checked> Nettoyage à sec</label>
+              <label><input type="checkbox"> Repassage seul</label>
+              <label><input type="checkbox"> Anti-taches / Express (+25%)</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="notes">Remarques / État du vêtement</label>
+            <textarea id="notes" rows="2" placeholder="Tache sur la manche gauche, bouton manquant..."></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary">Valider & Imprimer Ticket</button>
+        </form>
+      </section>
+
+      <!-- Suivi des commandes -->
+      <section class="card table-section">
+        <div class="table-header">
+          <h2><i class="fa-solid fa-clock-rotate-left"></i> Suivi des Commandes</h2>
+          <a href="#" class="view-all">Voir tout</a>
+        </div>
+        
+        <table>
+          <thead>
+            <tr>
+              <th>N° Ticket</th>
+              <th>Client</th>
+              <th>Articles</th>
+              <th>Statut</th>
+              <th>Montant</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>#PR-1042</td>
+              <td>Marie Dupont</td>
+              <td>3x Chemise</td>
+              <td><span class="status-badge status-progress">Lavage</span></td>
+              <td>10.50 €</td>
+              <td><button class="btn-action"><i class="fa-solid fa-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>#PR-1041</td>
+              <td>Jean Martin</td>
+              <td>1x Costume, 1x Manteau</td>
+              <td><span class="status-badge status-ready">Prêt</span></td>
+              <td>22.00 €</td>
+              <td><button class="btn-action"><i class="fa-solid fa-check"></i></button></td>
+            </tr>
+            <tr>
+              <td>#PR-1040</td>
+              <td>Sophie Bernard</td>
+              <td>1x Couette 2p</td>
+              <td><span class="status-badge status-pending">Reçu</span></td>
+              <td>18.00 €</td>
+              <td><button class="btn-action"><i class="fa-solid fa-eye"></i></button></td>
+            </tr>
+            <tr>
+              <td>#PR-1039</td>
+              <td>Lucie Morel</td>
+              <td>2x Robe</td>
+              <td><span class="status-badge status-done">Livré</span></td>
+              <td>30.00 €</td>
+              <td><button class="btn-action"><i class="fa-solid fa-print"></i></button></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+    </div>
+
+  </main>
+
+</body>
+</html>
